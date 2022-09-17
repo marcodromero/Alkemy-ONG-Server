@@ -38,9 +38,10 @@ const registerUser =  async (req, res, _next) => {
         const isValidUser = bcrypt.compareSync(password, user.password)
         if(isValidUser){
           
-          const token = jwt.sign({user}, SECRET, {expiresIn: '2d'})
+          const token = jwt.sign({user}, SECRET, {expiresIn: '2d'}) 
           // don't know if this needs to send as cookie, resource or header
-          res.send(token)
+          
+          res.header('auth-token', token).end()
 
         }else{
           res.send('Email or password is wrong!')
