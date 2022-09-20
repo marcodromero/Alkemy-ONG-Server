@@ -5,15 +5,15 @@ const Member = require('../models/member');
 const sequelizeCustom = new Sequelize(development);
 const memberModel = Member(sequelizeCustom,sequelize.DataTypes);
 
-const findOneMember = (id = -1)=> {
-    return memberModel.findOne({
+const findOneMember = async (id = -1)=> {
+    return await memberModel.findOne({
         where:{
             id
         }
     })
 }
 
-const createMember = (req,res,next) => {
+const createMember = async (req,res,next) => {
     //Este seria el Controller
     const validatorName = /^([A-Za-z]+\s?)+$/; //Service?
     const {name:nameMember,image} = req.body;
@@ -22,49 +22,49 @@ const createMember = (req,res,next) => {
         res.status(400)
         .send({message:`Name is Required`,nameMember});
     else{
-        memberModel
-        .create({ 
-            name:nameMember,
-            image
-        })
-        .then(member => {
-            res.json(member);
-        })
-        .catch(error => {
+        try{
+            const newMember = await memberModel
+            .create({ 
+                name:nameMember,
+                image
+            })
+            res.status(200).json(newMember);
+        }catch(exception){
             res.status(400)
             .json({
-                error
+                exception
             });
-        })
-        
+        }
     }        
 };
-const findMembers = (req,res,next) => {
-    
-    memberModel.findAll()
-    .then(members => {
+const findMembers = async (req,res,next) => {
+    try{
+        const members = await memberModel.findAll();
         res.json(members);
-    })
+    }catch(error){
+        res.status(500)
+        .json(error)
+    }
+    
 };
-const removeMember = (req,res,next) => {
+const removeMember = async (req,res,next) => {
     const {id = -1} = req.params;
-    memberModel.destroy({where:{
-        id
-    }})
-    .then((removes) => {
-        res.json({removes})
-    })
-    .catch((error) => {
+    try{
+        const remove = await memberModel.beforeBulkDestroy({where:{
+            id
+        }})
+        res.status(200).json(remove);
+    }catch(error){
         res.status(500).json({error});
-    })
+    }
 };
-const updateMember = (req,res,next) => {
+const updateMember = async (req,res,next) => {
     const {id = -1} = req.params;
     const {name:nameMember,image} = req.body;
-    findOneMember(id)  
-    .then((member) => {
-        if(member){
-            member.update({
+    const member = await findOneMember(id)  
+    if(member){
+        const memberUpdate = await member.update(
+            {
                 name:nameMember,
                 image
             },
@@ -72,17 +72,11 @@ const updateMember = (req,res,next) => {
                 where:{
                     id
                 }
-            })
-            .then((memberUpdate)=>{
-                res.status(200).json({message:`Update Member OK`,memberUpdate});
-            })
-            
+        })
+        res.status(200).json({message:`Update Member OK`,memberUpdate});
         }else{
             res.status(400).json({message:`Bad Request id member not Found ${id}`});
-        }
-            
-    })
-    
+    }           
 };
 
 module.exports = {
