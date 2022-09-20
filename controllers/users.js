@@ -49,7 +49,13 @@ const registerUser =  async (req, res, _next) => {
       }
     }
   }
+
+const getUsers = async (req, res, _next) => {
+  const users = await User.findAll()
+  res.send(users)
+}
   module.exports = {
     registerUser,
     loginUser,
+    getUsers
   };
