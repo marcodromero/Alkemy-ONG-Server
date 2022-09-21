@@ -1,14 +1,6 @@
-const express = require('express');
-const newsFieldsValidation = require('../helpers/newsValidation');
-const validatorHandler = require('../middleware/validator');
+const express = require("express");
+const newsFieldsValidation = require("../helpers/newsValidation");
+const validatorHandler = require("../middleware/validator");
 const router = express.Router();
 
-
-
-router.post(
-  "/",
-  verifyToken,
-  checkAdmin,
-  validatorHandler(newsFieldsValidation),
-  createNews
-);
+router.post("/", validatorHandler(newsFieldsValidation), createNews);
