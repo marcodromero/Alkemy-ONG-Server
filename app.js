@@ -8,10 +8,11 @@ require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const activitiesRouter = require('./routes/activities');
 const authRouter = require('./routes/auth');
 const categoriesRouter = require('./routes/categories');
 const contactsRouter = require('./routes/contacts')
-
+const testimonialsRouter = require('./routes/testimonials')
 const app = express();
 app.use(cors())
 
@@ -31,13 +32,18 @@ app.use('/auth', authRouter);
 app.use('/categories', categoriesRouter);
 app.use('/contacts/', contactsRouter)
 
+app.use('/testimonials', testimonialsRouter)
+
+app.use('/activities', activitiesRouter);
+
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
