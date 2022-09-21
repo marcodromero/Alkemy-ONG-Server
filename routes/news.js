@@ -5,3 +5,6 @@ const validatorHandler = require("../middleware/validator");
 const router = express.Router();
 
 router.post("/", validatorHandler(newsFieldsValidation), createNews);
+
+
+module.exports = router
