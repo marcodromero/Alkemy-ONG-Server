@@ -50,9 +50,11 @@ const findMembers = async (req,res,next) => {
 const removeMember = async (req,res,next) => {
     const {id = -1} = req.params;
     try{
-        const remove = await memberModel.beforeBulkDestroy({where:{
-            id
-        }})
+        const remove = await memberModel.beforeBulkDestroy({ 
+            where:{
+                id
+            }
+        })
         res.status(200).json(remove);
     }catch(error){
         res.status(500).json({error});
