@@ -9,6 +9,20 @@ const getAllCategories = async (res) => {
     res.send(rta);
 }
 
+const updateCategory = async (req, res) =>{
+    const {id} = req.params;
+    const {name, description} = req.body;
+
+    const categoryExist = await Category.findOne({where: {id: id}});
+
+    if(categoryExist){
+        await Category.update({name: name, description: description}, {where: {id: id}});
+        res.send('The category was successfully updated.');
+    }else{
+        res.send('category id does not exist.');
+    }
+}
+    
 const addCategory = async (req, res) => {
     const {name, description} = req.body;
 
@@ -22,5 +36,6 @@ const addCategory = async (req, res) => {
 
 module.exports = {
     getAllCategories,
+    updateCategory,
     addCategory
 }
