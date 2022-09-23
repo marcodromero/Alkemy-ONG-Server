@@ -14,10 +14,10 @@ const findOneMember = async (id = -1)=> {
 }
 
 const createMember = async (req,res,next) => {
-    //Este seria el Controller
-    const validatorName = /^([A-Za-z]+\s?)+$/; //Service?
+    
+    const validatorName = /^([A-Za-z]+\s?)+$/;
+
     const {name:nameMember,image} = req.body;
-    console.log(nameMember)
     if(!validatorName.test(nameMember))
         res.status(400)
         .send({message:`Name is Required`,nameMember});
@@ -50,11 +50,11 @@ const findMembers = async (req,res,next) => {
 const removeMember = async (req,res,next) => {
     const {id = -1} = req.params;
     try{
-        const remove = await memberModel.beforeBulkDestroy({ 
+        const remove = await memberModel.destroy({ 
             where:{
                 id
             }
-        })
+        });
         res.status(200).json(remove);
     }catch(error){
         res.status(500).json({error});
@@ -74,7 +74,7 @@ const updateMember = async (req,res,next) => {
                 where:{
                     id
                 }
-        })
+        });
         res.status(200).json({message:`Update Member OK`,memberUpdate});
         }else{
             res.status(400).json({message:`Bad Request id member not Found ${id}`});
