@@ -1,5 +1,6 @@
 const { News } = require("../models");
 
+
 const deleteNews = async (req, res) => {
     try {
         const id = req.params.id;
@@ -23,5 +24,20 @@ const deleteNews = async (req, res) => {
     }
 };
 
+const findAllNews = async (req, res) => {
+  try {
+    const news = await News.findAll({
+      where: { type: "news" },
+      attributes: ["name", "image", "createdAt"],
+    });
 
-module.exports = {deleteNews}
+    return res.status(200).json(news);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+module.exports = {findAllNews,deleteNews};
+
