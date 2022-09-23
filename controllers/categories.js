@@ -9,6 +9,19 @@ const getAllCategories = async (res) => {
     res.send(rta);
 }
 
+const deleteCategory = async (req, res) => {
+    const {id} = req.params;
+
+    const categoryExist = await Category.findOne({where: {id: id}});
+
+    if(categoryExist){
+        await Category.destroy({where: {id: id}});
+        res.send('The category was removed.');
+    }else{
+        res.send('category id does not exist.');
+    }
+}
+
 const updateCategory = async (req, res) =>{
     const {id} = req.params;
     const {name, description} = req.body;
@@ -37,5 +50,6 @@ const addCategory = async (req, res) => {
 module.exports = {
     getAllCategories,
     updateCategory,
-    addCategory
+    addCategory,
+    deleteCategory
 }
