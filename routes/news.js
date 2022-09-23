@@ -1,19 +1,19 @@
-const express = require('express');
-const { detailNews } = require('../controllers/news');
-const router = express.Router();
+
+const express = require("express");
+const { createNews,findAllNews,detailNews } = require("../controllers/news");
+const newsFieldsValidation = require("../helpers/newsValidation");
+const validatorHandler = require("../middleware/validator");
+
 
 
 router.get("/:id", detailNews)
 
-module.exports = router
-
-
-const router = express.Router();
-const { findAllNews } = require('../controllers/news');
+router.post("/", validatorHandler(newsFieldsValidation), createNews);
 
 router.get('/', findAllNews);
 
 
-module.exports = router;
+module.exports = router
+
 
 
