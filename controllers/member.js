@@ -43,7 +43,7 @@ const findMembers = async (req,res,next) => {
         res.json(members);
     }catch(error){
         res.status(500)
-        .json(error)
+        .json(error);
     }
     
 };
