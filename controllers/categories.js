@@ -3,7 +3,7 @@ const {Category} = require('../models');
 const getAllCategories = async (res) => {
     console.log("controlador");
     const rta = await Category.findAll({
-        attributes: ['name'] 
+        attributes: ['id', 'name'] 
     });
 
     res.send(rta);
@@ -12,11 +12,11 @@ const getAllCategories = async (res) => {
 const deleteCategory = async (req, res) => {
     const {id} = req.params;
 
-    const categoryExist = await Category.findOne({where: {id: id}});
+    const categoryExist = await Category.findOne({attributes: ['id', 'name', 'description'], where: {id: id}});
 
     if(categoryExist){
         await Category.destroy({where: {id: id}});
-        res.send('The category was removed.');
+        res.send(categoryExist);
     }else{
         res.send('category id does not exist.');
     }
@@ -26,11 +26,12 @@ const updateCategory = async (req, res) =>{
     const {id} = req.params;
     const {name, description} = req.body;
 
-    const categoryExist = await Category.findOne({where: {id: id}});
+    const categoryExist = await Category.findOne({attributes: ['id'], where: {id: id}});
 
     if(categoryExist){
         await Category.update({name: name, description: description}, {where: {id: id}});
-        res.send('The category was successfully updated.');
+        const categoryUpdated = await Category.findOne({attributes: ['id', 'name', 'description'], where: {id: id}});
+        res.send(categoryUpdated);
     }else{
         res.send('category id does not exist.');
     }
