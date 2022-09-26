@@ -20,9 +20,9 @@ const registerUser =  async (req, res, _next) => {
           image,
           roleId: roleId || 2,
         });
-        
         newUser.save();
-        res.send(newUser);
+        const token = jwt.sign({newUser}, SECRET, {expiresIn: '2d'}) 
+        res.header('Authorization', token).send(newUser);
       }
     } else {
       res.send("Please fill all fields");
@@ -41,7 +41,7 @@ const registerUser =  async (req, res, _next) => {
           const token = jwt.sign({user}, SECRET, {expiresIn: '2d'}) 
           // don't know if this needs to send as cookie, resource or header
           
-          res.header('auth-token', token).end()
+          res.header('Authorization', token).send(user)
 
         }else{
           res.send('Email or password is wrong!')
