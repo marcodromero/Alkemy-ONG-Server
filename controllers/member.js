@@ -47,24 +47,27 @@ const removeMember = async (req, res, _next) => {
         res.status(400).send(err)
     }
 };
-const updateMember = async (req, res, next) => {
-    const { id = -1 } = req.params;
-    const { name: nameMember, image } = req.body;
-    const member = await findOneMember(id)
-    if (member) {
-        const memberUpdate = await member.update(
-            {
-                name: nameMember,
+const updateMember = async (req, res, _next) => {
+    try {
+        const { id } = req.params
+        const { name, image } = req.body
+        const memberExist = await Member.findOne({ where: { id } })
+        if (!memberExist) {
+            throw "Member doesn't exist"
+        } else {
+            const member = {
+                id,
+                name,
                 image
-            },
-            {
-                where: {
-                    id
-                }
-            });
-        res.status(200).json({ message: `Update Member OK`, memberUpdate });
-    } else {
-        res.status(400).json({ message: `Bad Request id member not Found ${id}` });
+            }
+            await Member.update(member, {
+                where: { id }
+            })
+            res.send(member)
+        }
+
+    } catch (err) {
+        res.status(400).send(err)
     }
 };
 
