@@ -6,7 +6,7 @@ const getAllCategories = async (res) => {
         attributes: ['id', 'name'] 
     });
 
-    res.send(rta);
+    res.status(200).send(rta);
 }
 
 const deleteCategory = async (req, res) => {
@@ -16,9 +16,9 @@ const deleteCategory = async (req, res) => {
 
     if(categoryExist){
         await Category.destroy({where: {id: id}});
-        res.send(categoryExist);
+        res.status(200).send(categoryExist);
     }else{
-        res.send('category id does not exist.');
+        res.status(404).send('category id does not exist.');
     }
 }
 
@@ -31,9 +31,9 @@ const updateCategory = async (req, res) =>{
     if(categoryExist){
         await Category.update({name: name, description: description}, {where: {id: id}});
         const categoryUpdated = await Category.findOne({attributes: ['id', 'name', 'description'], where: {id: id}});
-        res.send(categoryUpdated);
+        res.status(200).send(categoryUpdated);
     }else{
-        res.send('category id does not exist.');
+        res.status(404).send('category id does not exist.');
     }
 }
     
@@ -44,7 +44,7 @@ const addCategory = async (req, res) => {
         const result = await Category.create({name: name, description: description});
         res.status(201).send(result);
     }else{
-        res.send('Please indicate the name of the category.');
+        res.status(400).send('Please indicate the name of the category.');
     }
 }
 
