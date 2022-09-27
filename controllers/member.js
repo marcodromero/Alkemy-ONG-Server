@@ -29,17 +29,22 @@ const findAllMembers = async (req, res, _next) => {
     }
 
 };
-const removeMember = async (req, res, next) => {
-    const { id = -1 } = req.params;
+const removeMember = async (req, res, _next) => {
     try {
-        const remove = await memberModel.destroy({
-            where: {
-                id
-            }
-        });
-        res.status(200).json(remove);
-    } catch (error) {
-        res.status(500).json({ error });
+        const { id } = req.params
+        const memberExist = await Member.findOne({ where: { id } })
+        if (!memberExist) {
+            throw "Member doesn't exist"
+        } else {
+
+            await Member.destroy({
+                where: { id }
+            })
+            res.send(memberExist)
+        }
+
+    } catch (err) {
+        res.status(400).send(err)
     }
 };
 const updateMember = async (req, res, next) => {
