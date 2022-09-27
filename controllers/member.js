@@ -20,13 +20,12 @@ const createMember = async (req, res, _next) => {
         res.status(400).send(err)
     }
 };
-const findMembers = async (req, res, next) => {
+const findAllMembers = async (req, res, _next) => {
     try {
-        const members = await memberModel.findAll();
+        const members = await Member.findAll();
         res.json(members);
-    } catch (error) {
-        res.status(500)
-            .json(error);
+    } catch (err) {
+        res.status(400).send(err)
     }
 
 };
@@ -66,7 +65,7 @@ const updateMember = async (req, res, next) => {
 
 module.exports = {
     createMember,
-    findMembers,
+    findAllMembers,
     removeMember,
     updateMember
 }
