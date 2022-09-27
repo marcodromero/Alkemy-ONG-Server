@@ -51,24 +51,19 @@ const detailNews = async (req, res) => {
 
 const deleteNews = async (req, res) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params
+    const newExist = await News.findOne({ where: { id } })
+    if (!newExist) {
+      throw "New doesn't exist"
+    } else {
 
-    const deletedNew = await News.destroy({ where: { id } });
-
-    if (deletedNew === 0) {
-      return res.status(404).json({
-        message: "News not found",
-      });
+      await News.destroy({
+        where: { id }
+      })
+      res.send(newExist)
     }
-    return res.status(200).json({
-      message: "Deleted",
-      id: id,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: true,
-      message: error.message,
-    });
+  } catch (err) {
+    res.status(400).send(err)
   }
 };
 
