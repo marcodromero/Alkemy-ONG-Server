@@ -22,14 +22,16 @@ const updateActivity = async (req, res, _next) => {
         if (!activityExist) {
             throw "Activity doesn't exist"
         } else {
-            await Activity.update({
+            const activity = {
+                id,
                 name,
                 image,
                 content
-            }, {
+            }
+            await Activity.update(activity, {
                 where: { id }
             })
-            res.send("Activity has been updated")
+            res.send(activity)
         }
 
     } catch (err) {
