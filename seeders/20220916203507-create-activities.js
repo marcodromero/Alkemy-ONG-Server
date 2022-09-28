@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
 
-    await queryInterface.bulkInsert('activities', [{
+    await queryInterface.bulkInsert('Activities', [{
       name: 'Impulsar proyectos de transformación',
       image: "https://i.picsum.photos/id/420/300/300.jpg?hmac=8SS52dAMD_0B1ZLyZQUMzSIbhTuqno6W7diGjLDMKX8",
       content: "Lorem ipsum dolor sit amet consectetur adipiscing elit parturient est, massa nam ad urna auctor facilisi lacinia proin",
