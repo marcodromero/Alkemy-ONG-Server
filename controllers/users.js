@@ -22,7 +22,10 @@ const registerUser =  async (req, res, _next) => {
         });
         newUser.save();
         const token = jwt.sign({newUser}, SECRET, {expiresIn: '2d'}) 
-        res.header('Authorization', token).send(newUser);
+        res.status(200).send({
+          Authorization: token,
+          user: newUser
+        }).end();
       }
     } else {
       res.send("Please fill all fields");
