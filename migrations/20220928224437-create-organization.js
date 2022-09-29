@@ -17,6 +17,15 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
+      facebook: {
+        type: Sequelize.STRING
+      },
+      linkedin: {
+        type: Sequelize.STRING
+      },
+      instagram: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
