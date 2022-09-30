@@ -14,11 +14,11 @@ module.exports = {
       phone: {
         type: Sequelize.INTEGER
       },
-      message: {
+      email:{
         type: Sequelize.STRING
       },
-      createdAt: {
-        type: Sequelize.DATE
+      message: {
+        type: Sequelize.STRING
       },
       deletedAt: {
         type: Sequelize.DATE
