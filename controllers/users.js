@@ -54,6 +54,21 @@ const registerUser =  async (req, res, _next) => {
     }
   }
 
+  const authenticateUser = async (req, res, _next) => {
+    const authorization = req.headers['Authorization'] || req.headers['authorization']
+    if(authorization){
+      const token = authorization.split('Bearer ')[1]
+      try {
+        const user = jwt.verify(token, process.env.TOKEN_SECRET)
+        res.status(200).send(user)
+      } catch (error) {
+        
+        res.send('Error: Not valid token')
+      }
+    }else{
+      res.status(400).send('Error: token not found')
+    }
+  }
 const getUsers = async (req, res, _next) => {
   const users = await User.findAll()
   res.send(users)
@@ -61,5 +76,6 @@ const getUsers = async (req, res, _next) => {
   module.exports = {
     registerUser,
     loginUser,
+    authenticateUser,
     getUsers
   };
