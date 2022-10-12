@@ -14,7 +14,18 @@ const getActivity = async (req, res, _next) => {
         res.status(400).send({'error': e})
     }
 }
-
+const getActivities = async (_req, res, _next) => {
+    try{
+        const activities = await Activity.findAll()
+        if(activities){
+            res.status(200).send(activities)
+        }else{
+            res.status(404).send({'error': 'no activities where found'})
+        }
+    }catch(e){
+        res.status(400).send({'error': e})
+    }
+}
 const createActivity = async (req, res, _next) => {
     try {
         const { name, image, content } = req.body
@@ -55,6 +66,6 @@ const updateActivity = async (req, res, _next) => {
 }
 
 module.exports = {
-    createActivity, updateActivity, getActivity
+    createActivity, updateActivity, getActivity, getActivities
 };
 
