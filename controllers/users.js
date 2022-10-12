@@ -6,10 +6,10 @@ const SECRET = String(process.env.TOKEN_SECRET)
 const registerUser =  async (req, res, _next) => {
     
     const { firstName, lastName, email, password, roleId, image } = req.body;
-    if (firstName && lastName && email && password && roleId && image) {
+    if (firstName && lastName && email && password && roleId) {
       const userExist = await User.findOne({ where: { email: email } });
       if (userExist) {
-        res.send("User already exist");
+        res.status(403).send("User already exist");
       } else {
         const hashPassowrd = bcrypt.hashSync(password, Number(saltRounds))
         const newUser = new User({
@@ -17,7 +17,7 @@ const registerUser =  async (req, res, _next) => {
           lastName,
           email,
           password: hashPassowrd,
-          image,
+          image: image || 'https://via.placeholder.com/150',
           roleId: roleId || 2,
         });
         newUser.save();
@@ -28,7 +28,7 @@ const registerUser =  async (req, res, _next) => {
         }).end();
       }
     } else {
-      res.send("Please fill all fields");
+      res.status(403).send("Please fill all fields");
     }
   }
 
