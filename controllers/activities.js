@@ -1,5 +1,20 @@
 const { Activity } = require("../models")
 
+
+const getActivity = async (req, res, _next) => {
+    try{
+        const {id } = req.params
+        const activity = await Activity.findOne({where: {id: id}})
+        if(activity){
+            res.status(200).send(activity)
+        }else{
+            res.status(404).send({'error': 'activity not found'})
+        }
+    }catch(e){
+        res.status(400).send({'error': e})
+    }
+}
+
 const createActivity = async (req, res, _next) => {
     try {
         const { name, image, content } = req.body
@@ -40,6 +55,6 @@ const updateActivity = async (req, res, _next) => {
 }
 
 module.exports = {
-    createActivity, updateActivity
+    createActivity, updateActivity, getActivity
 };
 
