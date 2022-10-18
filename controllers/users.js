@@ -63,7 +63,10 @@ const registerUser =  async (req, res, _next) => {
         res.status(200).send(user)
       } catch (error) {
         
-        res.send('Error: Not valid token')
+        res.status(400).send({
+          error: error, 
+          message: 'Not valid token'
+        })
       }
     }else{
       res.status(400).send('Error: token not found')
