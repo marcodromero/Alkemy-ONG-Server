@@ -73,9 +73,23 @@ const getUsers = async (req, res, _next) => {
   const users = await User.findAll()
   res.send(users)
 }
+const getUser = async(req, res, _next) => {
+  try {
+	const {id} = req.params
+	  const user = await User.findOne({
+	    where:{
+	      id: id
+	    }
+	  })
+    res.status(200).send(user)
+} catch (error) {
+	res.status(404).send('User not found')
+}
+}
   module.exports = {
     registerUser,
     loginUser,
     authenticateUser,
-    getUsers
+    getUsers, 
+    getUser
   };
