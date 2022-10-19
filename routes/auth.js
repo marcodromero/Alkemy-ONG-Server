@@ -10,4 +10,5 @@ router.post("/login", loginValidator, loginUser);
 
 router.get('/me', authenticateUser)
 
+
 module.exports = router;
