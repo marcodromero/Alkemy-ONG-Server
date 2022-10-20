@@ -2,106 +2,108 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert('Users', 
     [{
       roleId: 1,
       firstName: "Adah",
       lastName: "Lownie",
       email: "alownie0@zdnet.com",
-      password: "W9w6zAnacw",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/ff4444/ffffff",
-      createdAt: "2022-03-23T21:38:42Z",
-      UpdatedAt: "2022-08-27T17:55:49Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Carolus",
       lastName: "Stitwell",
       email: "cstitwell1@dropbox.com",
-      password: "FCZvXpQ",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/5fa2dd/ffffff",
-      createdAt: "2022-02-06T23:26:02Z",
-      UpdatedAt: "2022-09-06T17:37:11Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Evania",
       lastName: "Littlejohns",
       email: "elittlejohns2@edublogs.org",
-      password: "pUIpRvdkF",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/dddddd/000000",
-      createdAt: "2022-07-22T13:45:01Z",
-      UpdatedAt: "2022-04-22T19:10:36Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Damara",
       lastName: "Howler",
       email: "dhowler3@sogou.com",
-      password: "g4IUxh",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/cc0000/ffffff",
-      createdAt: "2022-07-01T15:33:04Z",
-      UpdatedAt: "2022-08-06T06:43:53Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Tibold",
       lastName: "Hutchence",
       email: "thutchence4@nih.gov",
-      password: "d7lGt7WcH",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/ff4444/ffffff",
-      createdAt: "2021-12-05T07:32:48Z",
-      UpdatedAt: "2022-07-30T04:27:06Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+      updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Thia",
       lastName: "Belleny",
       email: "tbelleny5@mit.edu",
-      password: "tMko0P",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/ff4444/ffffff",
-      createdAt: "2022-06-21T07:50:23Z",
-      UpdatedAt: "2022-07-25T12:22:47Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Otho",
       lastName: "Piggens",
       email: "opiggens6@delicious.com",
-      password: "XuAsCs",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/5fa2dd/ffffff",
-      createdAt: "2022-08-25T01:59:40Z",
-      UpdatedAt: "2022-03-13T04:13:51Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Beauregard",
       lastName: "Whiley",
       email: "bwhiley7@skype.com",
-      password: "9mV11DQ8Y",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/dddddd/000000",
-      createdAt: "2022-06-24T23:40:08Z",
-      UpdatedAt: "2022-05-20T19:18:31Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Briggs",
       lastName: "Aimer",
       email: "baimer8@indiatimes.com",
-      password: "1jx0Uja8BCa",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/cc0000/ffffff",
-      createdAt: "2022-01-15T11:09:36Z",
-      UpdatedAt: "2022-01-12T08:06:40Z"
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+      updatedAt: new Date("2022-05-02T04:07:30Z"),
     },
     {
       roleId: 1,
       firstName: "Jeanna",
       lastName: "Abbess",
       email: "jabbess9@seesaa.net",
-      password: "IGYjkdO14Y",
+      password: "$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O",
       image: "http://dummyimage.com/100x100.png/dddddd/000000",
-      createdAt: "2022-09-17T12:46:32Z",
-      UpdatedAt: "2021-09-26T07:46:40Z"
-    }]
+      createdAt: new Date("2022-05-07T14:12:13Z"),
+          updatedAt: new Date("2022-05-02T04:07:30Z"),
+    }], {}
+    )
   },
 
   down: async (queryInterface, Sequelize) => {
