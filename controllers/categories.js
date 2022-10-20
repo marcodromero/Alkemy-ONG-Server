@@ -3,7 +3,7 @@ const { Category } = require("../models");
 const getAllCategories = async (res) => {
   console.log("controlador");
   const rta = await Category.findAll({
-    attributes: ["id", "name"],
+    attributes: ["id", "name", "description", "path"],
   });
 
   res.status(200).send(rta);
@@ -12,7 +12,7 @@ const getAllCategories = async (res) => {
 const getCategory = async (req, res) => {
   const { id } = req.params;
   const category = await Category.findOne({
-    attributes: ["id", "name", "description", "image"],
+    attributes: ["id", "name", "description", "path"],
     where: { id: id },
   });
   res.status(200).send(category);
@@ -22,7 +22,7 @@ const deleteCategory = async (req, res) => {
   const { id } = req.params;
 
   const categoryExist = await Category.findOne({
-    attributes: ["id", "name", "description"],
+    attributes: ["id", "name", "description", "path"],
     where: { id: id },
   });
 
@@ -36,7 +36,7 @@ const deleteCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   const { id } = req.params;
-  const { name, description } = req.body;
+  const { name, description, path } = req.body;
 
   const categoryExist = await Category.findOne({
     attributes: ["id"],
@@ -45,11 +45,11 @@ const updateCategory = async (req, res) => {
 
   if (categoryExist) {
     await Category.update(
-      { name: name, description: description },
+      { name: name, description: description, path: path },
       { where: { id: id } }
     );
     const categoryUpdated = await Category.findOne({
-      attributes: ["id", "name", "description"],
+      attributes: ["id", "name", "description", "path"],
       where: { id: id },
     });
     res.status(200).send(categoryUpdated);
@@ -59,12 +59,13 @@ const updateCategory = async (req, res) => {
 };
 
 const addCategory = async (req, res) => {
-  const { name, description } = req.body;
+  const { name, description, path } = req.body;
 
   if (name && typeof name === "string") {
     const result = await Category.create({
       name: name,
       description: description,
+      path : path
     });
     res.status(201).send(result);
   } else {

@@ -3,32 +3,44 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Categories', [{
-      name: 'Categoria1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      name: 'Inicio',
+      description: 'Página de bienvenida.',
+      path: '/',
       createdAt: new Date,
       updatedAt: new Date
     },
     {
-      name: 'Categoria2',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      name: 'Nosotros',
+      description: 'Miembros de la organización',
+      path: '/about',
       createdAt: new Date,
       updatedAt: new Date
     },
     {
-      name: 'Categoria3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      name: 'Actividades',
+      description: 'Actividades que realiza la organización.',
+      path: '/activities',
       createdAt: new Date,
       updatedAt: new Date
     },
     {
-      name: 'Categoria4',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      name: 'Novedades',
+      description: 'Listado de todas las novedades',
+      path: '/news',
       createdAt: new Date,
       updatedAt: new Date
     },
     {
-      name: 'Categoria5',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+      name: 'Testimonios',
+      description: 'Testimonios de personas.',
+      path: '/testimonials',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      name: 'Contacto',
+      description: 'Formulario para contactar a la organización.',
+      path: '/contact',
       createdAt: new Date,
       updatedAt: new Date
     } 
