@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
 
     await queryInterface.bulkInsert('Organizations', [{
-      title: 'Organization X',
+      title: 'SOMOS MÁS',
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit hac, inceptos nulla imperdiet ac sodales proin turpis senectus varius, penatibus class lobortis vestibulum facilisis vehicula dictum. Turpis dapibus in a justo phasellus dictumst suscipit elementum",
       image: "https://i.picsum.photos/id/435/350/350.jpg?hmac=nvp7MK34j268wvD3es1YXXiKxe8AiiT29uoosP85iso",
       facebook: "https://zoratamagallery.sfo3.digitaloceanspaces.com/Social/Facebook.svg",
