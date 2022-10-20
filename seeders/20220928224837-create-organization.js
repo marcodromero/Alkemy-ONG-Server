@@ -10,6 +10,9 @@ module.exports = {
       facebook: "https://zoratamagallery.sfo3.digitaloceanspaces.com/Social/Facebook.svg",
       linkedin: "https://zoratamagallery.sfo3.digitaloceanspaces.com/Social/Linkedin.svg",
       instagram: "https://zoratamagallery.sfo3.digitaloceanspaces.com/Social/Instagram.svg",
+      facebookUrl: "https://www.facebook.com",
+      linkedinUrl: "https://www.linkedin.com",
+      instagramUrl: "https://www.instagram.com",
       createdAt: new Date,
       updatedAt: new Date
     }]);
