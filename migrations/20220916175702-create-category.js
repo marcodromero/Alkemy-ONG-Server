@@ -14,6 +14,9 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      path: {
+        type: Sequelize.STRING
+      },
       deletedAt: {
         type: Sequelize.DATE
       },
