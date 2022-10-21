@@ -17,9 +17,24 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     image: DataTypes.STRING,
-    facebook: DataTypes.STRING,
-    linkedin: DataTypes.STRING,
-    instagram: DataTypes.STRING,
+    facebook: {
+      type: DataTypes.BLOB('long'),
+      get() {
+        return this.getDataValue('facebook').toString('utf8');
+      }
+    },
+    linkedin: {
+      type: DataTypes.BLOB('long'),
+      get() {
+        return this.getDataValue('linkedin').toString('utf8');
+      }
+    },
+    instagram: {
+      type: DataTypes.BLOB('long'),
+      get() {
+        return this.getDataValue('instagram').toString('utf8');
+      }
+    },
     facebookUrl: DataTypes.STRING,
     linkedinUrl: DataTypes.STRING,
     instagramUrl: DataTypes.STRING
