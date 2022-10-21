@@ -3,7 +3,8 @@ const { News } = require("../models");
 const createNews = async (req, res) => {
   try {
     const dataNews = req.body;
-
+    dataNews.categoryId = dataNews.categoryId || '1';
+    dataNews.type = dataNews.type || 'news';
     const news = await News.create(dataNews);
 
     res.status(201).json(news);
