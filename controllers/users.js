@@ -6,7 +6,7 @@ const SECRET = String(process.env.TOKEN_SECRET)
 const registerUser =  async (req, res, _next) => {
     
     const { firstName, lastName, email, password, roleId, image } = req.body;
-    if (firstName && lastName && email && password && roleId) {
+    if (firstName && lastName && email && password ) {
       const userExist = await User.findOne({ where: { email: email } });
       if (userExist) {
         res.status(403).send("User already exist");
@@ -22,6 +22,7 @@ const registerUser =  async (req, res, _next) => {
         });
         newUser.save();
         const token = jwt.sign({newUser}, SECRET, {expiresIn: '2d'}) 
+        
         res.status(200).send({
           Authorization: token,
           user: newUser
@@ -60,7 +61,10 @@ const registerUser =  async (req, res, _next) => {
       const token = authorization.split('Bearer ')[1]
       try {
         const user = jwt.verify(token, process.env.TOKEN_SECRET)
-        res.status(200).send(user)
+        res.status(200).send({
+          user : user.newUser,
+          Authorization: token
+        })
       } catch (error) {
         
         res.status(400).send({
