@@ -5,7 +5,7 @@ const registerValidator = [
   check("lastName").exists().isString().notEmpty(),
   check("email").exists().isEmail().notEmpty(),
   check("password").exists().isString().notEmpty(),
-  check("roleId").exists().isNumeric().notEmpty(),
+  check("roleId").default(2),
   check("image"),
   (req, res, next) =>{
     validateResult(req, res, next)
