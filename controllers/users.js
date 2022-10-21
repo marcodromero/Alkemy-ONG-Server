@@ -60,9 +60,9 @@ const registerUser =  async (req, res, _next) => {
     if(authorization){
       const token = authorization.split('Bearer ')[1]
       try {
-        const user = jwt.verify(token, process.env.TOKEN_SECRET)
+        const user = jwt.verify(token, SECRET)
         res.status(200).send({
-          user : user.newUser,
+          user: user.user || user.newUser,
           Authorization: token
         })
       } catch (error) {
