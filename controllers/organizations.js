@@ -23,9 +23,9 @@ const updateOrganization = async (req, res, _next) => {
                 title: title,
                 description: description,
                 image: image,
-                facebook: existOrganization.facebook,
-                linkedin: existOrganization.linkedin,
-                instagram: existOrganization.instagram,
+                facebook: facebook,
+                linkedin: linkedin,
+                instagram: instagram,
                 facebookUrl: facebookUrl,
                 linkedinUrl: linkedinUrl,
                 instagramUrl: instagramUrl
