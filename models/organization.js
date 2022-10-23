@@ -16,7 +16,19 @@ module.exports = (sequelize, DataTypes) => {
   Organization.init({
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    image: DataTypes.STRING,
+    image: {
+      type: DataTypes.BLOB('long'),
+      get() {
+        return this.getDataValue('image').toString('utf8');
+      }
+    },
+    welcomeTitle: DataTypes.STRING,
+    welcomeImage: {
+      type: DataTypes.BLOB('long'),
+      get() {
+        return this.getDataValue('welcomeImage').toString('utf8');
+      }
+    },
     facebook: {
       type: DataTypes.BLOB('long'),
       get() {
