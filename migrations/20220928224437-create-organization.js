@@ -15,16 +15,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       image: {
-        type: Sequelize.STRING
+        type: Sequelize.BLOB('long'),
       },
       facebook: {
-        type: Sequelize.STRING
+        type: Sequelize.BLOB('long'),
       },
       linkedin: {
-        type: Sequelize.STRING
+        type: Sequelize.BLOB('long'),
       },
       instagram: {
-        type: Sequelize.STRING
+        type: Sequelize.BLOB('long'),
       },
       facebookUrl: {
         type: Sequelize.STRING
