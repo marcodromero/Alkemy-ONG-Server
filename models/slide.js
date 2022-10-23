@@ -14,7 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Slide.init({
-    imageUrl: DataTypes.STRING,
+    imageUrl: {
+      type: DataTypes.BLOB("long"),
+      get() {
+        return this.getDataValue("imageUrl").toString("utf8");
+      }
+    },
     text: DataTypes.STRING,
     order: DataTypes.INTEGER,
     organizationId: DataTypes.INTEGER
