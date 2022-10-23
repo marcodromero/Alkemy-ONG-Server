@@ -1,4 +1,4 @@
-const { News } = require("../models");
+const { News, sequelize } = require("../models");
 
 const createNews = async (req, res) => {
   try {
@@ -17,9 +17,11 @@ const createNews = async (req, res) => {
 
 const findAllNews = async (req, res) => {
   try {
-    const news = await News.findAll({});
-
-    return res.status(200).json(news);
+    const news = await News.findAll({
+      order: [['updatedAt', 'DESC']]
+    });
+    
+  res.status(200).json(news);
   } catch (error) {
     res.status(500).json({
       message: error.message,
