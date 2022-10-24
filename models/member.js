@@ -17,7 +17,12 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     name: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: {
+      type: DataTypes.BLOB("long"),
+      get() {
+        return this.getDataValue("image").toString("utf8");
+      }
+    }
   }, {
     sequelize,
     modelName: 'Member',
