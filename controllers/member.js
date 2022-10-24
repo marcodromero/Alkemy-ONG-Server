@@ -1,19 +1,23 @@
 const { Member } = require('../models');
 
-const findOneMember = async (id = -1) => {
-    return await memberModel.findOne({
-        where: {
-            id
-        }
-    })
-}
+
+const findOneMember = async (req, res) => {
+    const { id } = req.params;
+    const member = await Member.findOne({
+        attributes: ["id", "name", "description", "image", "rol"],
+        where: { id: id },
+    });
+    res.status(200).send(member);
+    };
 
 const createMember = async (req, res, _next) => {
     try {
-        const { name, image } = req.body
+        const { name, image, rol, description } = req.body
         const newMember = await Member.create({
             name,
             image,
+            rol,
+            description
         })
         res.send(newMember)
     } catch (err) {
@@ -50,7 +54,7 @@ const removeMember = async (req, res, _next) => {
 const updateMember = async (req, res, _next) => {
     try {
         const { id } = req.params
-        const { name, image } = req.body
+        const { name, image, rol, description } = req.body
         const memberExist = await Member.findOne({ where: { id } })
         if (!memberExist) {
             throw "Member doesn't exist"
@@ -58,7 +62,9 @@ const updateMember = async (req, res, _next) => {
             const member = {
                 id,
                 name,
-                image
+                image,
+                rol,
+                description
             }
             await Member.update(member, {
                 where: { id }
@@ -75,5 +81,6 @@ module.exports = {
     createMember,
     findAllMembers,
     removeMember,
-    updateMember
+    updateMember,
+    findOneMember
 }
