@@ -14,9 +14,15 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      welcomeTitle: {
+        type: Sequelize.STRING
+      },
       image: {
         type: Sequelize.BLOB('long'),
       },
+      welcomeImage: {
+        type: Sequelize.BLOB('long'),
+      },      
       facebook: {
         type: Sequelize.BLOB('long'),
       },

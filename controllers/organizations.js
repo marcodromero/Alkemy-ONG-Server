@@ -13,7 +13,7 @@ const getOrganization = async (req, res, _next) => {
 
 const updateOrganization = async (req, res, _next) => {
     try {
-        const { title, description, image, facebook, linkedin, instagram, facebookUrl, linkedinUrl, instagramUrl } = req.body
+        const { title, description, image, welcomeTitle, welcomeImage, facebook, linkedin, instagram, facebookUrl, linkedinUrl, instagramUrl } = req.body
         const existOrganization = await Organization.findOne()
         if (!existOrganization) {
             throw "Organization doesn't exist"
@@ -23,6 +23,8 @@ const updateOrganization = async (req, res, _next) => {
                 title: title,
                 description: description,
                 image: image,
+                welcomeTitle: welcomeTitle,
+                welcomeImage: welcomeImage,
                 facebook: facebook,
                 linkedin: linkedin,
                 instagram: instagram,

@@ -22,6 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         return this.getDataValue('image').toString('utf8');
       }
     },
+    welcomeTitle: DataTypes.STRING,
+    welcomeImage: {
+      type: DataTypes.BLOB('long'),
+      get() {
+        return this.getDataValue('welcomeImage').toString('utf8');
+      }
+    },
     facebook: {
       type: DataTypes.BLOB('long'),
       get() {
