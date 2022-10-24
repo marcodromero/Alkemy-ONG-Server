@@ -15,7 +15,12 @@ module.exports = (sequelize, DataTypes) => {
   };
   Testimonial.init({
     name: DataTypes.STRING,
-    image: DataTypes.STRING,
+    image: {
+      type: DataTypes.BLOB("long"),
+      get() {
+        return this.getDataValue("image").toString("utf8");
+      }
+    },
     content: DataTypes.STRING
   }, {
     sequelize,
