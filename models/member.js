@@ -22,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       get() {
         return this.getDataValue("image").toString("utf8");
       }
-    }
+    },
+    rol: DataTypes.STRING,
+    description: DataTypes.STRING(750),
   }, {
     sequelize,
     modelName: 'Member',
