@@ -49,11 +49,25 @@ const getAllTestimonials = async (req, res, _next) => {
   }
 }
 
+const getTestimonial = async (req, res, _next) => {
+  try {
+    const { id } = req.params
+    const testimonial = await Testimonial.findOne({ where: { id: id } })
+    if (testimonial) {
+      res.status(200).send(testimonial)
+    } else {
+      res.status(404).send({ 'error': 'testimonial not found' })
+    }
+  } catch (e) {
+    res.status(400).send({ 'error': e })
+  }
+}
 
 module.exports = {
   createTestimonial,
   updateTestimonial,
   deleteTestimonial,
-  getAllTestimonials
+  getAllTestimonials,
+  getTestimonial
 };
 
