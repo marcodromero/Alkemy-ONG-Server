@@ -12,16 +12,25 @@ https://www.apachefriends.org/es/index.html
 3) Abrir el proyecto en el editor y desde ahi copiar .env.example y cambiar el nombre a .env.
 4) Abrir la consola dentro del proyecto y ejecutar el siguiente comando para que se instalen las dependencias:
 
-  npm install
+``` bash
+npm install
+ ```
 
 5) Abrir la consola dentro del proyecto y ejecutar los siguientes comandos:
 
- npx sequelize-cli db:migrate
+``` bash
+npx sequelize-cli db:migrate
+ ```
+
+``` bash
  npx sequelize-cli db:seed:all
+```
 
 6) Poner a funcionar el servidor con el siguiente comando en la consola:
 
+``` bash
  npm run start
+```
 
 * Credenciales 
 
