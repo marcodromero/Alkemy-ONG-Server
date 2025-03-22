@@ -1,36 +1,33 @@
-# Server Base - Proyecto ONG
+# Proyecto ONG - Server
 
+¿Como probarlo en tu computadora?
+Requisitos previos:
+Tener instalado Nodejs en la pc, Xampp.
+https://nodejs.org/es
+https://www.apachefriends.org/es/index.html
 
-## Envinroment setup
+1) Ejecutar Xampp y poner a funcionar las opciones Apache y Mysql.
+2) En el navegador ir a la url http://localhost/phpmyadmin y crear una base de datos con el nombre'ong'
+2) Ir a la opcion 'variables' y editar el valor max_allowed_packed a 104857600 (sino habra un error al volcar los datos de prueba a las tablas)
+3) Abrir el proyecto en el editor y desde ahi copiar .env.example y cambiar el nombre a .env.
+4) Abrir la consola dentro del proyecto y ejecutar el siguiente comando para que se instalen las dependencias:
 
-1) Create database
-2) Copy .env.example to .env and fill with database credentials.
+  npm install
 
-To install dependencies, run
-``` bash
-npm install
-```
+5) Abrir la consola dentro del proyecto y ejecutar los siguientes comandos:
 
-3) Migrations:
-``` bash
-npx sequelize-cli db:migrate
-```
+ npx sequelize-cli db:migrate
+ npx sequelize-cli db:seed:all
 
-4) Seeders:
-Running all seeders
-``` bash
-npx sequelize-cli db:seed:all
-```
-Populate with users only:
-``` bash
-npm run db:seed:standard-users
-```
-Or:
-``` bash
-npm run db:seed:admin-users
-```
-## Start local server
+6) Poner a funcionar el servidor con el siguiente comando en la consola:
 
-``` bash
-npm start
-```
+ npm run start
+
+* Credenciales 
+
+Usuario admin de prueba
+marco@mail.com
+12345678
+
+Usuario normal
+registrandose

@@ -3,11 +3,11 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Users', [{
-      firstName: 'Usuario',
-      lastName: 'Demo',
-      email: 'test@test.com',
+      firstName: 'Marco',
+      lastName: 'Romero',
+      email: 'marco@mail.com',
       
-      password: '$2b$10$myNQ7zjpuoiiVEGnNAIKzu16Y.jzD0r47U3YDXDCCrXN9oh.KWd4O',
+      password: '$2b$10$iT1t/lamLDXk7oohBz2BKei5nLvnBql11A0bHuOafQOR0AI.p47zu', //12345678
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
