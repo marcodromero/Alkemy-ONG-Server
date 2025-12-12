@@ -20,7 +20,7 @@ Instala XAMPP (si aún no lo has hecho).
 
 Abre el Panel de Control de XAMPP.
 
-Inicia el módulo MySQL. (Sugerencia: Puedes incluir aquí una captura del Panel de Control de XAMPP con MySQL iniciado).
+Inicia el módulo MySQL.
 
 ### 3. Instalación de Dependencias
 
